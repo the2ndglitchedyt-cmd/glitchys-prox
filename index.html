@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glitchys Prox</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #080c12;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: grid;
+      place-items: center;
+    }
+
+    .container {
+      width: min(90%, 650px);
+      text-align: center;
+    }
+
+    h1 {
+      color: #39ff88;
+      font-size: clamp(36px, 8vw, 65px);
+      text-shadow: 0 0 20px #39ff8866;
+    }
+
+    p { color: #9caaba; }
+
+    input {
+      width: 100%;
+      padding: 17px;
+      background: #141c28;
+      border: 1px solid #39ff8877;
+      border-radius: 12px;
+      color: white;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 15px 30px;
+      background: #39ff88;
+      color: #07110b;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover { background: #75ffad; }
+
+    .status {
+      margin-top: 35px;
+      color: #39ff88;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>GLITCHYS PROX</h1>
+    <p>Your web. Your way.</p>
+
+    <form id="search">
+      <input id="url" placeholder="Enter a website or search..." required>
+      <button type="submit">LAUNCH WEBSITE</button>
+    </form>
+
+    <div class="status">● GLITCHYS PROX V1.0</div>
+  </main>
+
+  <script>
+    document.getElementById("search").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const value = document.getElementById("url").value.trim();
+      if (!value) return;
+
+      const destination = /^https?:\/\//i.test(value)
+        ? value
+        : "https://www.google.com/search?q=" + encodeURIComponent(value);
+
+      window.open(destination, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>
